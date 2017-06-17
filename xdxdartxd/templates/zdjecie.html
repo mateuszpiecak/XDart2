@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <title>XDart - projekt python</title>
+  </head>
+  <body>
+    <article>
+      <header>
+          <h1>Zalogowany: {{ user.username }}</h1>
+          <form action="http://127.0.0.1:8000/login">
+            <input type="submit" value="Zaloguj" />
+          </form>
+          <form action="http://127.0.0.1:8000/register">
+            <input type="submit" value="Rejestracja" />
+          </form>
+          <form action="http://127.0.0.1:8000/logout">
+            <input type="submit" value="Wyloguj" />
+          </form>
+          <h2> </h2>
+          <form action="http://127.0.0.1:8000/admin/zdjecia/zdjecie/add/">
+            <input type="submit" value="DODAJ ZDJĘCIE" />
+          </form>
+
+
+        <h1>XDart</h1>
+          <p>czyli galeria obrazków z możliwością logowania i dodawania zawartości</p>
+        <p>autor: Mateusz Piecak</p>
+      </header>
+      <p>Galeria:</p>
+      <figure>
+
+        <div>
+            {% for zdjecie in zdjecia %}
+                {% if zdjecie.obrazek %}
+                    <h1>{{ zdjecie.tytul }}</h1>
+                    <img src='{{ zdjecie.obrazek.url }}', style='height: 100%; width: 100%; object-fit: contain'/>
+
+                {% endif %}
+            {% endfor %}
+
+        </div>
+
+      </figure>
+
+      </p>
+    </article>
+  </body>
+</html>
